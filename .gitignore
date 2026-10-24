@@ -1,0 +1,7 @@
+node_modules/
+main.js
+.DS_Store
+.claude
+CLAUDE.md
+TODO.md
+docs/superpowers/
