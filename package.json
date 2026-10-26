@@ -1,6 +1,6 @@
 {
 	"name": "open-with-app",
-	"version": "2026.10.1",
+	"version": "2026.10.2",
 	"description": "Open the current note in another app (like iA Writer) with a keyboard shortcut.",
 	"main": "main.js",
 	"type": "module",

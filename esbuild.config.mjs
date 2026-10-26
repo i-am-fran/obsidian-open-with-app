@@ -34,6 +34,9 @@ const context = await esbuild.context({
 	],
 	format: 'cjs',
 	target: 'es2021',
+	// Turn `await import('child_process')` into require(): Obsidian can't resolve Node modules
+	// through a native import(), so it would fail at runtime.
+	supported: { 'dynamic-import': false },
 	logLevel: 'info',
 	sourcemap: prod ? false : 'inline',
 	treeShaking: true,
