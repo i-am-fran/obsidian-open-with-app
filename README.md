@@ -3,7 +3,10 @@
 Open With App lets you keep Obsidian as your default Markdown app, and open the note you're looking at in another app with a keyboard shortcut.
 
 - **[Install in Obsidian](https://obsidian.md/plugins?id=open-with-app)**
+- **[Documentation](https://i-am-fran.github.io/obsidian-open-with-app/)**
 - **[Report a bug](https://github.com/i-am-fran/obsidian-open-with-app/issues)**
+
+<a href="https://www.buymeacoffee.com/iamfran" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="41" width="148"></a>
 
 I use it to write in [iA Writer](https://ia.net/writer). Obsidian is where my notes live, but when I want to focus on one of them, I press a shortcut and it opens in iA Writer, away from the sidebars, links and plugins. Both apps edit the same file, so whatever I write there is in Obsidian straight away.
 
@@ -12,6 +15,8 @@ That's all it does: one command, one app. It works with any editor, on Mac, Wind
 ## How it works
 
 Pick your app in the settings, give the command **Open current file in…** a shortcut in Settings → Hotkeys, and press it with a note open. The command is named after your app, so with iA Writer it reads **Open current file in iA Writer**.
+
+There's also a button in the ribbon that does the same. On iPhone and iPad you can put it in the quick-access menu under Settings → Appearance → **Ribbon menu configuration**.
 
 Each kind of device keeps its own app, because plugin settings live in the vault and a synced vault travels between computers. The settings page only shows the one for the device you're on:
 
@@ -39,15 +44,7 @@ Other ways to install:
 - **BRAT:** add `i-am-fran/obsidian-open-with-app` in the BRAT plugin to follow every release as soon as it's published.
 - **By hand:** download `main.js` and `manifest.json` from the [latest release](https://github.com/i-am-fran/obsidian-open-with-app/releases/latest), put them in `<vault>/.obsidian/plugins/open-with-app/`, and turn on Open With App in Settings → Community plugins. If you want to check the files were built from this repository, run `gh attestation verify main.js --repo i-am-fran/obsidian-open-with-app`.
 
-## All features
-
-- One command: **Open current file in <your app>**
-- Mac: open any app by name
-- Windows and Linux: run any program or command with the file's path
-- iOS: open in iA Writer through a Location, with or without the keyboard
-- A separate app per kind of device, so one synced vault works everywhere
-- A notice when no file is open, no app is set, or the app can't be found
-- A changed app name shows in the command after Obsidian restarts
+The documentation has [every feature, including the little ones](https://i-am-fran.github.io/obsidian-open-with-app/docs.html#all-features).
 
 ## Support
 

@@ -1,0 +1,33 @@
+remote_theme: i-am-fran/web-docs-template
+plugins:
+  - jekyll-remote-theme
+
+collections:
+  docs:
+    output: false
+
+title: "Open With App"
+tagline: "Keep Obsidian as your Markdown app, and open the note you're looking at in another app, like iA Writer, with one shortcut."
+description: "Open With App is an Obsidian plugin with one command: open the current note in another app, like iA Writer. Works on Mac, Windows, Linux and iOS."
+github_url: "https://github.com/i-am-fran/obsidian-open-with-app"
+author_url: "https://iamfran.com"
+author_label: "iamfran.com"
+repository: "i-am-fran/obsidian-open-with-app"
+url: "https://i-am-fran.github.io"
+baseurl: "/obsidian-open-with-app"
+
+# GitHub Pages turns on the Primer theme by default, whose style.scss can
+# overwrite the template's assets/css/style.css. Turn it off.
+theme: null
+
+markdown: kramdown
+kramdown:
+  auto_ids: true
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - superpowers
