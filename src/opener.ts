@@ -2,21 +2,33 @@
 
 export type PlatformKind = "mac" | "windows" | "linux" | "ios" | "other";
 
+// The apps the plugin knows how to open on iOS, or "custom" for any app's own link. "" means none chosen yet.
+export type IosApp = "" | "ia-writer" | "textastic" | "custom";
+
+export const IOS_APP_NAMES: Record<Exclude<IosApp, "">, string> = {
+	"ia-writer": "iA Writer",
+	textastic: "Textastic",
+	custom: "Custom link",
+};
+
 export interface OpenWithSettings {
 	macApp: string;
 	windowsPath: string;
 	linuxCommand: string;
-	// Name of the iA Writer Location that holds the vault.
+	iosApp: IosApp;
+	// iA Writer: name of the Location that holds the vault.
 	iosLocation: string;
+	// iA Writer: open the note ready for typing.
 	iosShowKeyboard: boolean;
-	// A link to another iOS app, with {path}, {fullPath} and {vault} placeholders. Used instead of iA Writer when set.
+	// Custom: an app's link with {path}, {fullPath} and {vault} placeholders.
 	iosCustomLink: string;
 }
 
 export const DEFAULT_SETTINGS: OpenWithSettings = {
-	macApp: "iA Writer",
+	macApp: "",
 	windowsPath: "",
 	linuxCommand: "",
+	iosApp: "",
 	iosLocation: "",
 	iosShowKeyboard: true,
 	iosCustomLink: "",
@@ -57,21 +69,43 @@ export interface IosFile {
 	vault: string;
 }
 
-// Returns null when neither a custom link nor an iA Writer location is set.
-export function iosUrl(settings: OpenWithSettings, file: IosFile): string | null {
-	const customLink = settings.iosCustomLink.trim();
-	if (customLink) {
-		return customLink
-			.replaceAll("{fullPath}", encodeURIComponent(file.fullPath))
-			.replaceAll("{path}", encodeURIComponent(file.path))
-			.replaceAll("{vault}", encodeURIComponent(file.vault));
-	}
+// The iOS app in use. Settings saved before the App choice existed only have a location or a custom link.
+export function iosApp(settings: OpenWithSettings): IosApp {
+	if (settings.iosApp) return settings.iosApp;
+	if (settings.iosCustomLink.trim()) return "custom";
+	if (settings.iosLocation.trim()) return "ia-writer";
+	return "";
+}
 
-	// iA Writer's Library Path format is "Location: path/in/location".
-	const location = settings.iosLocation.trim();
-	if (!location) return null;
-	const url = `ia-writer://open?path=${encodeURIComponent(`${location}: ${file.path}`)}`;
-	return settings.iosShowKeyboard ? `${url}&edit=true` : url;
+// Textastic's documented link for opening a file it can reach by its full path.
+const TEXTASTIC_LINK = "textastic://x-callback-url/open?location=fullPath&path={fullPath}";
+
+// Returns null when no app is chosen, or the chosen one isn't set up yet.
+export function iosUrl(settings: OpenWithSettings, file: IosFile): string | null {
+	switch (iosApp(settings)) {
+		case "ia-writer": {
+			// iA Writer's Library Path format is "Location: path/in/location".
+			const location = settings.iosLocation.trim();
+			if (!location) return null;
+			const url = `ia-writer://open?path=${encodeURIComponent(`${location}: ${file.path}`)}`;
+			return settings.iosShowKeyboard ? `${url}&edit=true` : url;
+		}
+		case "textastic":
+			return fillLink(TEXTASTIC_LINK, file);
+		case "custom": {
+			const link = settings.iosCustomLink.trim();
+			return link ? fillLink(link, file) : null;
+		}
+		default:
+			return null;
+	}
+}
+
+function fillLink(link: string, file: IosFile): string {
+	return link
+		.replaceAll("{fullPath}", encodeURIComponent(file.fullPath))
+		.replaceAll("{path}", encodeURIComponent(file.path))
+		.replaceAll("{vault}", encodeURIComponent(file.vault));
 }
 
 // A short name for the app, used in the command name and notices.
@@ -87,10 +121,13 @@ export function appLabel(platform: PlatformKind, settings: OpenWithSettings): st
 		case "linux":
 			label = lastPathPart(settings.linuxCommand);
 			break;
-		case "ios":
-			// A custom link is named after its scheme, e.g. "textastic" for textastic://…
-			label = settings.iosCustomLink.trim() ? (settings.iosCustomLink.trim().split(":")[0] ?? "") : "iA Writer";
+		case "ios": {
+			const app = iosApp(settings);
+			// A custom link is named after its scheme, e.g. "onewriter" for onewriter://…
+			if (app === "custom") label = settings.iosCustomLink.trim().split(":")[0] ?? "";
+			else if (app) label = IOS_APP_NAMES[app];
 			break;
+		}
 	}
 	return label || "external app";
 }

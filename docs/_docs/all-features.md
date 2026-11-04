@@ -21,11 +21,12 @@ headings:
 
 ### Devices {#features-devices}
 
-- Mac: open any app by name, `iA Writer` by default
+- Mac: open any app by name
 - Windows: run any program with the note's full path
 - Linux: run any command with the note's full path
-- iOS: open in iA Writer through a Location
-- iOS: with or without the keyboard
+- iOS: choose iA Writer, Textastic or a custom link, with setup steps for each
+- iOS: iA Writer through a Location, with or without the keyboard
+- iOS: Textastic through an external folder
 - iOS: any other app through a custom link with `{path}`, `{fullPath}` or `{vault}`
 - A separate app per kind of device, so one synced vault works everywhere
 - The settings page shows only the current device's setting
@@ -33,7 +34,7 @@ headings:
 ### Notices {#features-notices}
 
 - When no note is open
-- When no app or Location is set yet
+- When no app is chosen, or it isn't set up yet
 - When macOS can't find the app
 - When the app fails to start
 - On Android: that it can't open other apps there

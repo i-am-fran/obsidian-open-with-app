@@ -29,6 +29,6 @@ Other ways to install:
 
 ### First steps {#first-steps}
 
-1. Open Settings → Open With App and enter [your app](#your-app). On a Mac it starts out set to `iA Writer`, so change it if you use something else.
+1. Open Settings → Open With App and set up [your app](#your-app). On iPhone and iPad, choose it under **App** and follow the step shown for it.
 2. Open Settings → Hotkeys, search for **Open current file in**, and give it a shortcut.
 3. Open a note and press the shortcut. The note opens in your app.

@@ -21,4 +21,4 @@ The plugin also adds a button to the ribbon, an arrow pointing out of a box, tha
 
 ### The mobile quick menu {#mobile-menu}
 
-On iPhone and iPad, add the button to the quick-access menu under Settings → Appearance → **Ribbon menu configuration**. It's listed under the command's name, such as **Open current file in iA Writer**.
+On iPhone and iPad, add the button to the quick-access menu under Settings → Appearance → **Ribbon menu configuration**. It's listed under the command's name, such as **Open current file in Textastic**.

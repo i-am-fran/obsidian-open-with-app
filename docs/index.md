@@ -33,7 +33,7 @@ There's also a button in the ribbon that does the same. On iPhone and iPad you c
 
 **Any app on desktop.** Typora, VS Code, iA Writer, TextEdit: on a Mac you type the app's name, on Windows the path to the program, on Linux the command.
 
-**iPhone and iPad too.** On iOS, notes open in iA Writer, or in any app with a link you can fill in with the note's path.
+**iPhone and iPad too.** Choose iA Writer or Textastic and the settings walk you through setting it up, or use any app with a link that opens files.
 
 **One vault, every device.** Each kind of device keeps its own app, so a vault synced between a Mac, a Windows PC and an iPad opens the right app on each.
 

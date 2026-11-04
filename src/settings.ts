@@ -1,5 +1,5 @@
 import { App, PluginSettingTab, type SettingDefinitionItem } from "obsidian";
-import type { OpenWithSettings } from "./opener";
+import { IOS_APP_NAMES, iosApp, type OpenWithSettings } from "./opener";
 import { currentPlatform } from "./platform";
 import type OpenWithApp from "./main";
 
@@ -20,7 +20,7 @@ export class OpenWithSettingTab extends PluginSettingTab {
 							{
 								name: "App",
 								desc: `The app's name as it appears in your Applications folder. ${shortcut}`,
-								control: { type: "text", key: "macApp", placeholder: "iA Writer" },
+								control: { type: "text", key: "macApp", placeholder: "Typora" },
 							},
 						],
 					},
@@ -32,7 +32,7 @@ export class OpenWithSettingTab extends PluginSettingTab {
 						items: [
 							{
 								name: "Program",
-								desc: `The full path to the program, e.g. C:\\Program Files\\iA Writer\\iAWriter.exe. ${shortcut}`,
+								desc: `The full path to the program, e.g. C:\\Program Files\\Typora\\Typora.exe. ${shortcut}`,
 								control: { type: "text", key: "windowsPath", placeholder: "C:\\Program Files\\…\\App.exe" },
 							},
 						],
@@ -51,29 +51,49 @@ export class OpenWithSettingTab extends PluginSettingTab {
 						],
 					},
 				];
-			case "ios":
+			case "ios": {
+				const chosen = (app: string) => () => iosApp(this.plugin.settings) === app;
 				return [
 					{
 						type: "group",
 						items: [
 							{
+								name: "App",
+								desc: `Obsidian on iOS can only open other apps through their links, so pick one it knows, or enter any app's link. ${shortcut}`,
+								control: { type: "dropdown", key: "iosApp", options: { "": "Choose an app", ...IOS_APP_NAMES } },
+							},
+							{
+								name: "Set up iA Writer",
+								desc: "In iA Writer, add your vault folder as a Location. Then type the Location's name below, exactly as iA Writer shows it. If it doesn't match, iA Writer opens an empty document instead.",
+								visible: chosen("ia-writer"),
+							},
+							{
 								name: "Location",
-								desc: "Notes open in iA Writer unless you set a custom link below. In iA Writer, add your vault folder as a Location, then type its name here exactly as iA Writer shows it. If it doesn't match, iA Writer opens an empty document instead.",
+								desc: "The iA Writer Location that holds your vault.",
 								control: { type: "text", key: "iosLocation", placeholder: "Obsidian" },
+								visible: chosen("ia-writer"),
 							},
 							{
 								name: "Show keyboard",
 								desc: "Start typing as soon as the note opens.",
 								control: { type: "toggle", key: "iosShowKeyboard" },
+								visible: chosen("ia-writer"),
+							},
+							{
+								name: "Set up Textastic",
+								desc: "In Textastic, add your vault folder as an external folder, so it can open the note by its full path. Without it, Textastic opens but can't find the note.",
+								visible: chosen("textastic"),
 							},
 							{
 								name: "Custom link",
-								desc: "To use another app, enter its link with {path} (the note's path in the vault), {fullPath} (its full path on this device) or {vault} (the vault's name). The app needs access to your vault folder. Leave empty for iA Writer. A new link shows in the command after Obsidian restarts.",
-								control: { type: "text", key: "iosCustomLink", placeholder: "textastic://x-callback-url/open?location=fullPath&path={fullPath}" },
+								desc: "The app's link for opening a file, from its help on URL schemes. Put {path} (the note's path in the vault), {fullPath} (its full path on this device) or {vault} (the vault's name) where the note goes. The app needs access to your vault folder.",
+								control: { type: "text", key: "iosCustomLink", placeholder: "app://open?path={fullPath}" },
+								visible: chosen("custom"),
 							},
 						],
 					},
 				];
+			}
 			default:
 				return [
 					{
@@ -85,11 +105,15 @@ export class OpenWithSettingTab extends PluginSettingTab {
 	}
 
 	getControlValue(key: string): unknown {
+		// Settings saved before the App choice existed still show the app they use.
+		if (key === "iosApp") return iosApp(this.plugin.settings);
 		return this.plugin.settings[key as keyof OpenWithSettings];
 	}
 
 	async setControlValue(key: string, value: unknown): Promise<void> {
 		(this.plugin.settings as unknown as Record<string, unknown>)[key] = value;
 		await this.plugin.saveSettings();
+		// Show the chosen app's fields.
+		if (key === "iosApp") this.update();
 	}
 }

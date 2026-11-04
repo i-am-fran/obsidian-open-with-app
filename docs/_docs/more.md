@@ -21,7 +21,7 @@ The name is set when Obsidian starts. Restart Obsidian after changing the app.
 
 **Can I use another app than iA Writer on iPhone and iPad?**
 
-Yes, if the app has a link that opens a file. On iOS, Obsidian can't start other apps directly, only open links. Enter the app's link under **Custom link**: see [Other apps on iOS](#app-ios-custom).
+Yes, if the app has a link that opens a file. On iOS, Obsidian can't start other apps directly, only open links. Textastic is built in. For others, choose **Custom link** and enter the app's link: see [Other apps on iOS](#app-ios-custom).
 
 **Does it work on Android?**
 

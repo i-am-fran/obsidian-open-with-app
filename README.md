@@ -22,14 +22,12 @@ Each kind of device keeps its own app, because plugin settings live in the vault
 
 | Device | What you enter | Example |
 |---|---|---|
-| Mac | The app's name | `Typora` (`iA Writer` by default) |
+| Mac | The app's name | `Typora` |
 | Windows | The full path to the program | `C:\Program Files\Typora\Typora.exe` |
 | Linux | The command, or the full path to it | `ghostwriter` |
-| iOS | The iA Writer Location that holds your vault, or a custom link | `Obsidian` |
+| iOS | iA Writer, Textastic, or any app's link | Textastic |
 
-**On iPhone and iPad**, Obsidian can't start other apps, only open links, so notes open in iA Writer by default. First add your Obsidian vault folder to iA Writer as a Location, then type that Location's name in the settings, exactly as iA Writer shows it. If the name doesn't match, iA Writer opens an empty document instead of your note. Turn on **Show keyboard** to start typing as soon as it opens.
-
-To use another app on iOS, enter its link under **Custom link**, with `{path}`, `{fullPath}` or `{vault}` where the note should go. For example, for Textastic: `textastic://x-callback-url/open?location=fullPath&path={fullPath}`. The app needs access to your vault folder. The [documentation](https://i-am-fran.github.io/obsidian-open-with-app/docs.html#app-ios-custom) has the details.
+**On iPhone and iPad**, Obsidian can't start other apps, only open their links. Choose **iA Writer** or **Textastic** under **App** and the settings walk you through the one step each needs: giving the app access to your vault folder. For any other app, choose **Custom link** and enter the app's own link, with `{path}`, `{fullPath}` or `{vault}` where the note goes. The [documentation](https://i-am-fran.github.io/obsidian-open-with-app/docs.html#app-ios) has the details.
 
 Android isn't supported.
 

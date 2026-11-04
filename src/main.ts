@@ -47,7 +47,7 @@ export default class OpenWithApp extends Plugin {
 				vault: this.app.vault.getName(),
 			});
 			if (!url) {
-				new Notice("Set a location or a custom link in this plugin's settings first.");
+				new Notice("Choose an app and finish setting it up in this plugin's settings first.");
 				return;
 			}
 			window.open(url);
