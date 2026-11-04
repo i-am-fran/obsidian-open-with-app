@@ -15,7 +15,7 @@ headings:
     label: One vault, every device
 ---
 
-You choose your app under Settings → Open With App. The page only shows the setting for the device you're on.
+On desktop, any app that can open a Markdown file works. You choose it under Settings → Open With App. The page only shows the setting for the device you're on.
 
 | Device | Setting | What you enter | Default |
 | --- | --- | --- | --- |
@@ -27,11 +27,11 @@ You choose your app under Settings → Open With App. The page only shows the se
 
 ### Mac {#app-mac}
 
-Type the app's name as it appears in your Applications folder, such as `iA Writer`, `Typora` or `TextEdit`. The note opens with `open -a`, the same as choosing the app from Open With in the Finder. If macOS can't find an app with that name, you get a notice asking you to check it.
+Type the app's name as it appears in your Applications folder, such as `Typora`, `Visual Studio Code`, `iA Writer` or `TextEdit`. The note opens with `open -a`, the same as choosing the app from Open With in the Finder. If macOS can't find an app with that name, you get a notice asking you to check it.
 
 ### Windows {#app-windows}
 
-Enter the full path to the program, for example `C:\Program Files\iA Writer\iAWriter.exe`. The plugin starts the program with the note's full path.
+Enter the full path to the program, for example `C:\Program Files\Typora\Typora.exe`. The plugin starts the program with the note's full path.
 
 ### Linux {#app-linux}
 
@@ -39,7 +39,7 @@ Enter the command that starts your editor, such as `ghostwriter`, or its full pa
 
 ### iPhone and iPad {#app-ios}
 
-On iOS, notes open in iA Writer. iA Writer can only open files in its Locations, so set one up first:
+On iOS, Obsidian can't start other apps, so notes open in iA Writer through its links. iA Writer can only open files in its Locations, so set one up first:
 
 1. In iA Writer, add your Obsidian vault folder as a Location.
 2. In Settings → Open With App, type that Location's name in **Location**, exactly as iA Writer shows it.
@@ -48,4 +48,4 @@ If the name doesn't match, iA Writer opens an empty document instead of your not
 
 ### One vault, every device {#app-per-device}
 
-Plugin settings live in the vault, and a synced vault travels between your devices. That's why each kind of device has its own setting: a Mac opens iA Writer by name, a Windows PC runs its program path and an iPad uses its Location, all from the same vault.
+Plugin settings live in the vault, and a synced vault travels between your devices. That's why each kind of device has its own setting: a Mac opens an app by name, a Windows PC runs a program path and an iPad uses its Location, all from the same vault.

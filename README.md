@@ -1,6 +1,6 @@
 # Open With App
 
-Open With App lets you keep Obsidian as your default Markdown app, and open the note you're looking at in another app with a keyboard shortcut.
+Open With App lets you keep Obsidian as your default Markdown app, and open the note you're looking at in any other app with a keyboard shortcut.
 
 - **[Install in Obsidian](https://obsidian.md/plugins?id=open-with-app)**
 - **[Documentation](https://i-am-fran.github.io/obsidian-open-with-app/)**
@@ -14,7 +14,7 @@ That's all it does: one command, one app. It works with any editor, on Mac, Wind
 
 ## How it works
 
-Pick your app in the settings, give the command **Open current file in…** a shortcut in Settings → Hotkeys, and press it with a note open. The command is named after your app, so with iA Writer it reads **Open current file in iA Writer**.
+Pick your app in the settings, give the command **Open current file in…** a shortcut in Settings → Hotkeys, and press it with a note open. The command is named after your app, so with Typora it reads **Open current file in Typora**.
 
 There's also a button in the ribbon that does the same. On iPhone and iPad you can put it in the quick-access menu under Settings → Appearance → **Ribbon menu configuration**.
 
@@ -22,12 +22,12 @@ Each kind of device keeps its own app, because plugin settings live in the vault
 
 | Device | What you enter | Example |
 |---|---|---|
-| Mac | The app's name | `iA Writer` (the default) |
-| Windows | The full path to the program | `C:\Program Files\iA Writer\iAWriter.exe` |
+| Mac | The app's name | `Typora` (`iA Writer` by default) |
+| Windows | The full path to the program | `C:\Program Files\Typora\Typora.exe` |
 | Linux | The command, or the full path to it | `ghostwriter` |
 | iOS | The iA Writer Location that holds your vault | `Obsidian` |
 
-**On iPhone and iPad**, notes open in iA Writer. First add your Obsidian vault folder to iA Writer as a Location, then type that Location's name in the settings, exactly as iA Writer shows it. If the name doesn't match, iA Writer opens an empty document instead of your note. Turn on **Show keyboard** to start typing as soon as it opens.
+**On iPhone and iPad**, Obsidian can't start other apps, so notes open in iA Writer through its links. First add your Obsidian vault folder to iA Writer as a Location, then type that Location's name in the settings, exactly as iA Writer shows it. If the name doesn't match, iA Writer opens an empty document instead of your note. Turn on **Show keyboard** to start typing as soon as it opens.
 
 Android isn't supported.
 

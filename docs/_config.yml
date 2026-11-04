@@ -7,8 +7,8 @@ collections:
     output: false
 
 title: "Open With App"
-tagline: "Keep Obsidian as your Markdown app, and open the note you're looking at in another app, like iA Writer, with one shortcut."
-description: "Open With App is an Obsidian plugin with one command: open the current note in another app, like iA Writer. Works on Mac, Windows, Linux and iOS."
+tagline: "Keep Obsidian as your Markdown app, and open the note you're looking at in any other app, like Typora, VS Code or iA Writer, with one shortcut."
+description: "Open With App is an Obsidian plugin with one command: open the current note in any other app. Works on Mac, Windows, Linux and iOS."
 github_url: "https://github.com/i-am-fran/obsidian-open-with-app"
 author_url: "https://iamfran.com"
 author_label: "iamfran.com"

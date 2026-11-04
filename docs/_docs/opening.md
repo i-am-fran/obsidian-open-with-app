@@ -13,7 +13,7 @@ headings:
 
 ### The command {#hotkey}
 
-The command is named after your app: with iA Writer it reads **Open current file in iA Writer**. Run it from the command palette, or give it a shortcut in Settings → Hotkeys. If you change the app, the new name shows in the command after Obsidian restarts.
+The command is named after your app: with Typora it reads **Open current file in Typora**. Run it from the command palette, or give it a shortcut in Settings → Hotkeys. If you change the app, the new name shows in the command after Obsidian restarts.
 
 ### The ribbon button {#ribbon}
 
@@ -21,4 +21,4 @@ The plugin also adds a button to the ribbon, an arrow pointing out of a box, tha
 
 ### The mobile quick menu {#mobile-menu}
 
-On iPhone and iPad, add the button to the quick-access menu under Settings → Appearance → **Ribbon menu configuration**. It's listed under the command's name, such as **Open current file in iA Writer**.
+On iPhone and iPad, add the button to the quick-access menu under Settings → Appearance → **Ribbon menu configuration**. It's listed under the command's name, such as **Open current file in iA Writer**, since on iOS notes open in iA Writer.

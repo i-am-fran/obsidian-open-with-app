@@ -21,7 +21,7 @@ headings:
 
 ### Devices {#features-devices}
 
-- Mac: open any app by name
+- Mac: open any app by name, `iA Writer` by default
 - Windows: run any program with the note's full path
 - Linux: run any command with the note's full path
 - iOS: open in iA Writer through a Location

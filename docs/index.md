@@ -21,7 +21,7 @@ That's all it does: one command, one app. It works with any editor, on Mac, Wind
 
 ## How it works {#how-it-works}
 
-Pick your app in Settings → Open With App, give the command **Open current file in…** a shortcut in Settings → Hotkeys, and press it with a note open. The command is named after your app, so with iA Writer it reads **Open current file in iA Writer**.
+Pick your app in Settings → Open With App, give the command **Open current file in…** a shortcut in Settings → Hotkeys, and press it with a note open. The command is named after your app, so with Typora it reads **Open current file in Typora**.
 
 There's also a button in the ribbon that does the same. On iPhone and iPad you can put it in the quick-access menu.
 
@@ -31,9 +31,9 @@ There's also a button in the ribbon that does the same. On iPhone and iPad you c
 
 ## Features {#features}
 
-**Any editor on desktop.** On a Mac you type the app's name, on Windows the path to the program, on Linux the command.
+**Any app on desktop.** Typora, VS Code, iA Writer, TextEdit: on a Mac you type the app's name, on Windows the path to the program, on Linux the command.
 
-**iA Writer on iPhone and iPad.** Notes open in iA Writer through a Location that holds your vault, with the keyboard up if you like.
+**iPhone and iPad too.** On iOS, notes open in iA Writer through a Location that holds your vault, with the keyboard up if you like.
 
 **One vault, every device.** Each kind of device keeps its own app, so a vault synced between a Mac, a Windows PC and an iPad opens the right app on each.
 

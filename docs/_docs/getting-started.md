@@ -9,7 +9,7 @@ headings:
     label: First steps
 ---
 
-Open With App adds one command to Obsidian: open the note you're looking at in another app. Both apps work on the same file, so whatever you write in one is in the other straight away.
+Open With App adds one command to Obsidian: open the note you're looking at in any other app. Both apps work on the same file, so whatever you write in one is in the other straight away.
 
 ### Install {#install}
 
@@ -29,6 +29,6 @@ Other ways to install:
 
 ### First steps {#first-steps}
 
-1. Open Settings → Open With App and enter [your app](#your-app). On a Mac it's already set to `iA Writer`.
+1. Open Settings → Open With App and enter [your app](#your-app). On a Mac it starts out set to `iA Writer`, so change it if you use something else.
 2. Open Settings → Hotkeys, search for **Open current file in**, and give it a shortcut.
 3. Open a note and press the shortcut. The note opens in your app.
