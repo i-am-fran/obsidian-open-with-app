@@ -3,6 +3,7 @@
 ## 2026.11.1
 
 - Added a ribbon icon for the command. On mobile you can now add it to the quick-access menu under Settings → Appearance → Ribbon menu configuration. On desktop you can hide the icon by right-clicking the ribbon.
+- Added: on iPhone and iPad, notes can open in apps other than iA Writer. Enter the app's link under **Custom link**, with `{path}`, `{fullPath}` or `{vault}` where the note goes.
 
 ## 2026.10.2
 

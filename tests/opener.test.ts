@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULT_SETTINGS, OpenWithSettings, appLabel, desktopLaunch, iosUrl } from "../src/opener";
 
+const file = (path: string) => ({ path, fullPath: `/var/vault/${path}`, vault: "My Vault" });
 const settings = (overrides: Partial<OpenWithSettings> = {}): OpenWithSettings => ({ ...DEFAULT_SETTINGS, ...overrides });
 
 describe("desktopLaunch", () => {
@@ -41,19 +42,31 @@ describe("desktopLaunch", () => {
 
 describe("iosUrl", () => {
 	it("builds an iA Writer open link for the file in the named location", () => {
-		expect(iosUrl(settings({ iosLocation: "Obsidian", iosShowKeyboard: false }), "Notes/My Note.md")).toBe(
+		expect(iosUrl(settings({ iosLocation: "Obsidian", iosShowKeyboard: false }), file("Notes/My Note.md"))).toBe(
 			"ia-writer://open?path=Obsidian%3A%20Notes%2FMy%20Note.md",
 		);
 	});
 
 	it("asks iA Writer to show the keyboard when that's on", () => {
-		expect(iosUrl(settings({ iosLocation: "Obsidian", iosShowKeyboard: true }), "Note.md")).toBe(
+		expect(iosUrl(settings({ iosLocation: "Obsidian", iosShowKeyboard: true }), file("Note.md"))).toBe(
 			"ia-writer://open?path=Obsidian%3A%20Note.md&edit=true",
 		);
 	});
 
-	it("returns null when no location is set", () => {
-		expect(iosUrl(settings({ iosLocation: "" }), "Note.md")).toBeNull();
+	it("returns null when neither a location nor a custom link is set", () => {
+		expect(iosUrl(settings({ iosLocation: "" }), file("Note.md"))).toBeNull();
+	});
+
+	it("fills the custom link's placeholders, encoded for a URL", () => {
+		const s = settings({ iosCustomLink: "textastic://x-callback-url/open?location=fullPath&path={fullPath}&v={vault}&p={path}" });
+		expect(iosUrl(s, file("Notes/My Note.md"))).toBe(
+			"textastic://x-callback-url/open?location=fullPath&path=%2Fvar%2Fvault%2FNotes%2FMy%20Note.md&v=My%20Vault&p=Notes%2FMy%20Note.md",
+		);
+	});
+
+	it("uses the custom link instead of iA Writer when both are set", () => {
+		const s = settings({ iosLocation: "Obsidian", iosCustomLink: "onewriter://x-callback-url/open?path={path}" });
+		expect(iosUrl(s, file("Note.md"))).toBe("onewriter://x-callback-url/open?path=Note.md");
 	});
 });
 
@@ -70,8 +83,12 @@ describe("appLabel", () => {
 		expect(appLabel("linux", settings({ linuxCommand: "/usr/bin/marktext" }))).toBe("marktext");
 	});
 
-	it("is always iA Writer on iOS", () => {
+	it("is iA Writer on iOS without a custom link", () => {
 		expect(appLabel("ios", settings())).toBe("iA Writer");
+	});
+
+	it("uses the custom link's scheme on iOS", () => {
+		expect(appLabel("ios", settings({ iosCustomLink: "textastic://x-callback-url/open?path={fullPath}" }))).toBe("textastic");
 	});
 
 	it("falls back to a generic name when nothing is set", () => {

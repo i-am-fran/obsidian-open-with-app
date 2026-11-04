@@ -39,9 +39,15 @@ export default class OpenWithApp extends Plugin {
 
 		const platform = currentPlatform();
 		if (platform === "ios") {
-			const url = iosUrl(this.settings, file.path);
+			// The iOS adapter has getFullPath too, but FileSystemAdapter is desktop-only, so check for the method.
+			const adapter = this.app.vault.adapter as { getFullPath?: (path: string) => string };
+			const url = iosUrl(this.settings, {
+				path: file.path,
+				fullPath: adapter.getFullPath?.(file.path) ?? "",
+				vault: this.app.vault.getName(),
+			});
 			if (!url) {
-				new Notice("Set the location in this plugin's settings first.");
+				new Notice("Set a location or a custom link in this plugin's settings first.");
 				return;
 			}
 			window.open(url);

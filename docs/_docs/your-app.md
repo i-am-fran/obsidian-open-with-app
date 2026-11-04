@@ -11,6 +11,8 @@ headings:
     label: Linux
   - id: app-ios
     label: iPhone and iPad
+  - id: app-ios-custom
+    label: Other apps on iOS
   - id: app-per-device
     label: One vault, every device
 ---
@@ -24,6 +26,7 @@ On desktop, any app that can open a Markdown file works. You choose it under Set
 | Linux | **Command** | The command, or the full path to it | empty |
 | iOS | **Location** | The iA Writer Location that holds your vault | empty |
 | iOS | **Show keyboard** | Start typing as soon as the note opens | on |
+| iOS | **Custom link** | A link to another app, used instead of iA Writer | empty |
 
 ### Mac {#app-mac}
 
@@ -39,13 +42,33 @@ Enter the command that starts your editor, such as `ghostwriter`, or its full pa
 
 ### iPhone and iPad {#app-ios}
 
-On iOS, Obsidian can't start other apps, so notes open in iA Writer through its links. iA Writer can only open files in its Locations, so set one up first:
+On iOS, Obsidian can't start other apps, only open links. By default, notes open in iA Writer. iA Writer can only open files in its Locations, so set one up first:
 
 1. In iA Writer, add your Obsidian vault folder as a Location.
 2. In Settings → Open With App, type that Location's name in **Location**, exactly as iA Writer shows it.
 
 If the name doesn't match, iA Writer opens an empty document instead of your note. With **Show keyboard** on, the note opens ready for typing.
 
+### Other apps on iOS {#app-ios-custom}
+
+Any app with a link that opens a file can be used instead. Check the app's help for its "URL scheme" or "x-callback-url" commands, and enter the link under **Custom link**, with these placeholders where the note should go:
+
+| Placeholder | Becomes |
+| --- | --- |
+| `{path}` | The note's path inside the vault, e.g. `Notes/Reading list.md` |
+| `{fullPath}` | The note's full path on your iPhone or iPad |
+| `{vault}` | The vault's name |
+
+Each one is encoded for a link, so spaces and slashes come through safely. For example, Textastic documents this link for opening a file by its full path:
+
+```
+textastic://x-callback-url/open?location=fullPath&path={fullPath}
+```
+
+The app needs access to your vault folder, the same way iA Writer needs a Location. In Textastic, add the folder as an external folder first. Otherwise the app opens but can't find the note.
+
+When a custom link is set, it's used instead of iA Writer, and the command is named after the link's scheme, such as **Open current file in textastic**, after Obsidian restarts.
+
 ### One vault, every device {#app-per-device}
 
-Plugin settings live in the vault, and a synced vault travels between your devices. That's why each kind of device has its own setting: a Mac opens an app by name, a Windows PC runs a program path and an iPad uses its Location, all from the same vault.
+Plugin settings live in the vault, and a synced vault travels between your devices. That's why each kind of device has its own setting: a Mac opens an app by name, a Windows PC runs a program path and an iPad uses its Location or custom link, all from the same vault.

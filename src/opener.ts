@@ -9,6 +9,8 @@ export interface OpenWithSettings {
 	// Name of the iA Writer Location that holds the vault.
 	iosLocation: string;
 	iosShowKeyboard: boolean;
+	// A link to another iOS app, with {path}, {fullPath} and {vault} placeholders. Used instead of iA Writer when set.
+	iosCustomLink: string;
 }
 
 export const DEFAULT_SETTINGS: OpenWithSettings = {
@@ -17,6 +19,7 @@ export const DEFAULT_SETTINGS: OpenWithSettings = {
 	linuxCommand: "",
 	iosLocation: "",
 	iosShowKeyboard: true,
+	iosCustomLink: "",
 };
 
 export interface Launch {
@@ -44,12 +47,30 @@ export function desktopLaunch(platform: PlatformKind, settings: OpenWithSettings
 	}
 }
 
-// `vaultPath` is the file's path inside the vault, e.g. "Notes/My Note.md".
-// iA Writer's Library Path format is "Location: path/in/location".
-export function iosUrl(settings: OpenWithSettings, vaultPath: string): string | null {
+// The file to open on iOS.
+export interface IosFile {
+	// The path inside the vault, e.g. "Notes/My Note.md".
+	path: string;
+	// The absolute path on the device.
+	fullPath: string;
+	// The vault's name.
+	vault: string;
+}
+
+// Returns null when neither a custom link nor an iA Writer location is set.
+export function iosUrl(settings: OpenWithSettings, file: IosFile): string | null {
+	const customLink = settings.iosCustomLink.trim();
+	if (customLink) {
+		return customLink
+			.replaceAll("{fullPath}", encodeURIComponent(file.fullPath))
+			.replaceAll("{path}", encodeURIComponent(file.path))
+			.replaceAll("{vault}", encodeURIComponent(file.vault));
+	}
+
+	// iA Writer's Library Path format is "Location: path/in/location".
 	const location = settings.iosLocation.trim();
 	if (!location) return null;
-	const url = `ia-writer://open?path=${encodeURIComponent(`${location}: ${vaultPath}`)}`;
+	const url = `ia-writer://open?path=${encodeURIComponent(`${location}: ${file.path}`)}`;
 	return settings.iosShowKeyboard ? `${url}&edit=true` : url;
 }
 
@@ -67,7 +88,8 @@ export function appLabel(platform: PlatformKind, settings: OpenWithSettings): st
 			label = lastPathPart(settings.linuxCommand);
 			break;
 		case "ios":
-			label = "iA Writer";
+			// A custom link is named after its scheme, e.g. "textastic" for textastic://…
+			label = settings.iosCustomLink.trim() ? (settings.iosCustomLink.trim().split(":")[0] ?? "") : "iA Writer";
 			break;
 	}
 	return label || "external app";

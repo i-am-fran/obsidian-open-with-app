@@ -58,13 +58,18 @@ export class OpenWithSettingTab extends PluginSettingTab {
 						items: [
 							{
 								name: "Location",
-								desc: "On iOS, notes open in iA Writer. In iA Writer, add your vault folder as a Location, then type its name here exactly as iA Writer shows it. If it doesn't match, iA Writer opens an empty document instead.",
+								desc: "Notes open in iA Writer unless you set a custom link below. In iA Writer, add your vault folder as a Location, then type its name here exactly as iA Writer shows it. If it doesn't match, iA Writer opens an empty document instead.",
 								control: { type: "text", key: "iosLocation", placeholder: "Obsidian" },
 							},
 							{
 								name: "Show keyboard",
 								desc: "Start typing as soon as the note opens.",
 								control: { type: "toggle", key: "iosShowKeyboard" },
+							},
+							{
+								name: "Custom link",
+								desc: "To use another app, enter its link with {path} (the note's path in the vault), {fullPath} (its full path on this device) or {vault} (the vault's name). The app needs access to your vault folder. Leave empty for iA Writer. A new link shows in the command after Obsidian restarts.",
+								control: { type: "text", key: "iosCustomLink", placeholder: "textastic://x-callback-url/open?location=fullPath&path={fullPath}" },
 							},
 						],
 					},

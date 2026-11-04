@@ -26,6 +26,7 @@ headings:
 - Linux: run any command with the note's full path
 - iOS: open in iA Writer through a Location
 - iOS: with or without the keyboard
+- iOS: any other app through a custom link with `{path}`, `{fullPath}` or `{vault}`
 - A separate app per kind of device, so one synced vault works everywhere
 - The settings page shows only the current device's setting
 
