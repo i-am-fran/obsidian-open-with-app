@@ -11,11 +11,15 @@ export default class OpenWithApp extends Plugin {
 		this.addSettingTab(new OpenWithSettingTab(this.app, this));
 
 		// The name is fixed when the plugin loads, so a renamed app shows up after a restart.
+		const name = `Open current file in ${appLabel(currentPlatform(), this.settings)}`;
 		this.addCommand({
 			id: "open-current-file",
-			name: `Open current file in ${appLabel(currentPlatform(), this.settings)}`,
+			name,
 			callback: () => void this.openCurrentFile(),
 		});
+		// A ribbon icon is what lists the action under the mobile ribbon menu configuration
+		// (Settings → Appearance), so it can go in the mobile quick-access menu.
+		this.addRibbonIcon("external-link", name, () => void this.openCurrentFile());
 	}
 
 	async loadSettings() {

@@ -1,7 +1,7 @@
 {
 	"id": "open-with-app",
 	"name": "Open With App",
-	"version": "2026.10.2",
+	"version": "2026.11.1",
 	"minAppVersion": "1.13.0",
 	"description": "Open the current note in another app, like iA Writer, with a keyboard shortcut. Works on Mac, Windows, Linux and iOS.",
 	"author": "i-am-fran-dot-com",
