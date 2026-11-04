@@ -10,26 +10,22 @@ Open With App lets you keep Obsidian as your default Markdown app, and open the 
 
 I use it to write in [iA Writer](https://ia.net/writer). Obsidian is where my notes live, but when I want to focus on one of them, I press a shortcut and it opens in iA Writer, away from the sidebars, links and plugins. Both apps edit the same file, so whatever I write there is in Obsidian straight away.
 
-That's all it does: one command, one app. It works with any editor, on Mac, Windows, Linux and iOS.
+It's tested on macOS and iOS only. Windows and Linux should work too, and feedback and contributions are welcome.
 
 ## How it works
 
-Pick your app in the settings, give the command **Open current file in…** a shortcut in Settings → Hotkeys, and press it with a note open. The command is named after your app, so with Typora it reads **Open current file in Typora**.
+Choose your app under Settings → Open With App, give the command **Open current file in…** a shortcut under Settings → Hotkeys, and press it with a note open. There's also a ribbon button, which on iPhone and iPad you can add to the quick-access menu.
 
-There's also a button in the ribbon that does the same. On iPhone and iPad you can put it in the quick-access menu under Settings → Appearance → **Ribbon menu configuration**.
-
-Each kind of device keeps its own app, because plugin settings live in the vault and a synced vault travels between computers. The settings page only shows the one for the device you're on:
+Each kind of device keeps its own app, so one synced vault works everywhere:
 
 | Device | What you enter | Example |
 |---|---|---|
 | Mac | The app's name | `Typora` |
 | Windows | The full path to the program | `C:\Program Files\Typora\Typora.exe` |
-| Linux | The command, or the full path to it | `ghostwriter` |
+| Linux | The command | `ghostwriter` |
 | iOS | iA Writer, Textastic, or any app's link | Textastic |
 
-**On iPhone and iPad**, Obsidian can't start other apps, only open their links. Choose **iA Writer** or **Textastic** under **App** and the settings walk you through the one step each needs: giving the app access to your vault folder. For any other app, choose **Custom link** and enter the app's own link, with `{path}`, `{fullPath}` or `{vault}` where the note goes. The [documentation](https://i-am-fran.github.io/obsidian-open-with-app/docs.html#app-ios) has the details.
-
-Android isn't supported.
+On iOS, Obsidian can only open other apps through their links, so the settings walk you through setting up the app you choose. Android isn't supported.
 
 ## Installation
 
@@ -37,20 +33,13 @@ You need Obsidian 1.13.0 or newer.
 
 1. In Obsidian, open Settings → Community plugins → Browse.
 2. Search for **Open With App**, then install it and turn it on.
-3. Choose your app under Settings → Open With App, and a shortcut under Settings → Hotkeys.
+3. Choose your app under Settings → Open With App.
 
-Other ways to install:
+Other ways to install, such as BRAT, are in the [documentation](https://i-am-fran.github.io/obsidian-open-with-app/docs.html#install).
 
-- **BRAT:** add `i-am-fran/obsidian-open-with-app` in the BRAT plugin to follow every release as soon as it's published.
-- **By hand:** download `main.js` and `manifest.json` from the [latest release](https://github.com/i-am-fran/obsidian-open-with-app/releases/latest), put them in `<vault>/.obsidian/plugins/open-with-app/`, and turn on Open With App in Settings → Community plugins. If you want to check the files were built from this repository, run `gh attestation verify main.js --repo i-am-fran/obsidian-open-with-app`.
+## Feedback and contributing
 
-The documentation has [every feature, including the little ones](https://i-am-fran.github.io/obsidian-open-with-app/docs.html#all-features).
-
-## Support
-
-Open With App is free. If it helps you, you can buy me a coffee:
-
-<a href="https://www.buymeacoffee.com/iamfran" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="60" width="217"></a>
+Found a bug, or tried it on Windows or Linux? [Open an issue](https://github.com/i-am-fran/obsidian-open-with-app/issues). Pull requests are welcome too.
 
 ## Development
 
@@ -62,7 +51,7 @@ npm test        # vitest
 npm run lint    # eslint
 ```
 
-Changes are listed in the [changelog](CHANGELOG.md).
+Changes are in the [changelog](CHANGELOG.md).
 
 ## License
 

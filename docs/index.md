@@ -17,25 +17,21 @@ sections:
 
 I use it to write in [iA Writer](https://ia.net/writer). Obsidian is where my notes live, but when I want to focus on one of them, I press a shortcut and it opens in iA Writer, away from the sidebars, links and plugins. Both apps edit the same file, so whatever I write there is in Obsidian straight away.
 
-That's all it does: one command, one app. It works with any editor, on Mac, Windows, Linux and iOS.
+It's tested on macOS and iOS only. Windows and Linux should work too, and [feedback and contributions]({{ '/docs.html#feedback' | relative_url }}) are welcome.
 
 ## How it works {#how-it-works}
 
-Pick your app in Settings → Open With App, give the command **Open current file in…** a shortcut in Settings → Hotkeys, and press it with a note open. The command is named after your app, so with Typora it reads **Open current file in Typora**.
-
-There's also a button in the ribbon that does the same. On iPhone and iPad you can put it in the quick-access menu.
-
-[More about opening a note]({{ '/docs.html#opening' | relative_url }}).
+Choose your app under Settings → Open With App, give the command **Open current file in…** a shortcut, and press it with a note open. There's also a ribbon button, which on iPhone and iPad you can add to the quick-access menu.
 
 ***
 
 ## Features {#features}
 
-**Any app on desktop.** Typora, VS Code, iA Writer, TextEdit: on a Mac you type the app's name, on Windows the path to the program, on Linux the command.
+**Any app on desktop.** Type the app's name on a Mac, the program's path on Windows, the command on Linux.
 
-**iPhone and iPad too.** Choose iA Writer or Textastic and the settings walk you through setting it up, or use any app with a link that opens files.
+**iPhone and iPad too.** Choose iA Writer or Textastic and follow the setup step, or use any app's link.
 
-**One vault, every device.** Each kind of device keeps its own app, so a vault synced between a Mac, a Windows PC and an iPad opens the right app on each.
+**One vault, every device.** Each kind of device keeps its own app.
 
 [Every feature, including the little ones]({{ '/docs.html#all-features' | relative_url }}).
 
@@ -49,9 +45,9 @@ There's also a button in the ribbon that does the same. On iPhone and iPad you c
 <ul class="arrow-list">
   <li><a class="arrow-card" href="{{ '/docs.html#getting-started' | relative_url }}"><span class="arrow-card__text"><span class="arrow-card__title">Getting Started</span><span class="arrow-card__desc">Install it and open your first note.</span></span>{% include arrow-icon.html %}</a></li>
   <li><a class="arrow-card" href="{{ '/docs.html#your-app' | relative_url }}"><span class="arrow-card__text"><span class="arrow-card__title">Your app</span><span class="arrow-card__desc">What to enter on Mac, Windows, Linux and iOS.</span></span>{% include arrow-icon.html %}</a></li>
-  <li><a class="arrow-card" href="{{ '/docs.html#opening' | relative_url }}"><span class="arrow-card__text"><span class="arrow-card__title">Opening a note</span><span class="arrow-card__desc">The shortcut, the ribbon button and the mobile quick menu.</span></span>{% include arrow-icon.html %}</a></li>
+  <li><a class="arrow-card" href="{{ '/docs.html#opening' | relative_url }}"><span class="arrow-card__text"><span class="arrow-card__title">Opening a note</span><span class="arrow-card__desc">The command and the ribbon button.</span></span>{% include arrow-icon.html %}</a></li>
   <li><a class="arrow-card" href="{{ '/docs.html#all-features' | relative_url }}"><span class="arrow-card__text"><span class="arrow-card__title">All features</span><span class="arrow-card__desc">Every feature, including the little ones.</span></span>{% include arrow-icon.html %}</a></li>
-  <li><a class="arrow-card" href="{{ '/docs.html#faq' | relative_url }}"><span class="arrow-card__text"><span class="arrow-card__title">FAQ</span><span class="arrow-card__desc">When the wrong thing opens, or nothing does.</span></span>{% include arrow-icon.html %}</a></li>
+  <li><a class="arrow-card" href="{{ '/docs.html#feedback' | relative_url }}"><span class="arrow-card__text"><span class="arrow-card__title">Feedback and contributing</span><span class="arrow-card__desc">Tested on macOS and iOS. Tell me how it works for you.</span></span>{% include arrow-icon.html %}</a></li>
   <li><a class="arrow-card" href="https://www.buymeacoffee.com/iamfran" target="_blank" rel="noopener noreferrer"><span class="arrow-card__text"><span class="arrow-card__title">Buy me a coffee</span><span class="arrow-card__desc">Open With App is free. If it helps you, say thanks.</span></span>{% include arrow-icon.html %}</a></li>
   <li><a class="arrow-card" href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer"><span class="arrow-card__text"><span class="arrow-card__title">GitHub</span><span class="arrow-card__desc">Source, releases and issues.</span></span>{% include arrow-icon.html %}</a></li>
 </ul>
